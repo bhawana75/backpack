@@ -94,23 +94,19 @@ class LocallevelCrudController extends CrudController
 
         $this->crud->addField([
           'name' => 'district_id',
-          'type' => 'select2',
+          'type' => 'select2_from_ajax',
           'label' => "District Name",
           'entity'  => 'district', 
           'attribute' => 'districtname',
+          'placeholder' => "Select a District",
+          'minimum_input_length' => 0, 
+          'dependencies' => ['province_id'],
+          'data_source' => url("/api/getDistrict/province_id"),
+          'include_all_form_fields'=>true,
           'model' => District::class
         ]);
-          $this->crud->addField([
-            'name' => 'province_id',
-            'type' => 'select2',
-            'label' => "Province Name"
-          ]);
 
-          $this->crud->addField([
-            'name' => 'district_id',
-            'type' => 'select2',
-            'label' => "District Name"
-          ]);
+
 
           $this->crud->addField([
             'name' => 'locallevelname',
@@ -118,8 +114,7 @@ class LocallevelCrudController extends CrudController
             'label' => "Locallevel Name"
           ]);
 
-        CRUD::field('created_at');
-        CRUD::field('updated_at');
+        
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

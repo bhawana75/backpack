@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\Province;
-use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Illuminate\Database\Eloquent\Model;
 
-class District extends Model
+class Employee extends Model
 {
     use CrudTrait;
 
@@ -16,7 +15,7 @@ class District extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'districts';
+    protected $table = 'employees';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -29,9 +28,6 @@ class District extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-    public function province(){
-        return $this->belongsTo(Province::class,'province_id','id');
-    }
 
     /*
     |--------------------------------------------------------------------------

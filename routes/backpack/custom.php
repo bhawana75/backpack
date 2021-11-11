@@ -18,4 +18,12 @@ Route::group([
     Route::crud('province', 'ProvinceCrudController');
     Route::crud('district', 'DistrictCrudController');
     Route::crud('locallevel', 'LocallevelCrudController');
+    Route::crud('employee', 'EmployeeCrudController');
+}); // this should be the absolute last line of this file
+Route::group([
+    'namespace'  => 'App\Http\Controllers\Api',
+], function () { // custom admin routes
+
+    Route::get('/api/getDistrict/{id}', 'DistrictCrudController@index');
+    Route::get('/api/locallevel/{id}', 'LocallevelCrudController@index');
 }); // this should be the absolute last line of this file

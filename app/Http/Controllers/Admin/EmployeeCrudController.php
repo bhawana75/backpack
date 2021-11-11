@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\District;
-use App\Models\Province;
-use App\Http\Requests\DistrictRequest;
+use App\Http\Requests\EmployeeRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class DistrictCrudController
+ * Class EmployeeCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class DistrictCrudController extends CrudController
+class EmployeeCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -28,9 +26,9 @@ class DistrictCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\District::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/district');
-        CRUD::setEntityNameStrings('district', 'districts');
+        CRUD::setModel(\App\Models\Employee::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/employee');
+        CRUD::setEntityNameStrings('employee', 'employees');
     }
 
     /**
@@ -41,20 +39,7 @@ class DistrictCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        $this->crud->addColumn([
-            'name' => 'province_id',
-            'type' => 'select',
-            'label' => "Province Name",
-            'entity'    => 'province', 
-            'attribute' => 'provincename',
-            'model' => Province::class
-          ]);
-
-        $this->crud->addColumn([
-            'name' => 'districtname',
-            'type' => 'text',
-            'label' => "District Name"
-          ]);
+        
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -71,25 +56,9 @@ class DistrictCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(DistrictRequest::class);
-        $this->crud->addField([
-            'name' => 'province_id',
-            'type' => 'select2',
-            'label' => "Province Name",
-            'entity'  => 'province', 
-            'attribute' => 'provincename',
-            'model' => Province::class
-          ]);
-          
-        $this->crud->addField([
-            'name' => 'districtname',
-            'type' => 'text',
-            'label' => "District Name",
-          ]);
+        CRUD::setValidation(EmployeeRequest::class);
 
-          
-        CRUD::field('created_at');
-        CRUD::field('updated_at');
+        
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
