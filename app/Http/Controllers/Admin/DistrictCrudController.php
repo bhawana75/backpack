@@ -88,8 +88,7 @@ class DistrictCrudController extends CrudController
           ]);
 
           
-        CRUD::field('created_at');
-        CRUD::field('updated_at');
+        
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

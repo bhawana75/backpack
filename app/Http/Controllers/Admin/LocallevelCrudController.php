@@ -94,16 +94,16 @@ class LocallevelCrudController extends CrudController
 
         $this->crud->addField([
           'name' => 'district_id',
-          'type' => 'select2_from_ajax',
+          'type' => 'select2',
           'label' => "District Name",
           'entity'  => 'district', 
           'attribute' => 'districtname',
-          'placeholder' => "Select a District",
-          'minimum_input_length' => 0, 
-          'dependencies' => ['province_id'],
-          'data_source' => url("/api/getDistrict/province_id"),
-          'include_all_form_fields'=>true,
-          'model' => District::class
+          // 'placeholder' => "Select a District",
+          // 'minimum_input_length' => 0, 
+          // 'dependencies' => ['province_id'],
+          // 'data_source' => url("/api/getDistrict/province_id"),
+          // 'include_all_form_fields'=>true,
+          // 'model' => District::class
         ]);
 
 

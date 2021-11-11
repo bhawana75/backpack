@@ -12,7 +12,7 @@ class LocallevelCrudController extends Controller
     public function index(Request $request, $value)
     {
         $search_term = $request->input('q');
-        $form = collect($request->input('form'))->pluck('value', 'locallevelname');
+        $form = collect($request->input('form'))->pluck('value', 'name');
 
         $options = Locallevel::query();
 
@@ -23,7 +23,7 @@ class LocallevelCrudController extends Controller
 
         // if a district has been selected, only show localevel from that district
         if (data_get($form, $value)) {
-            $options = $options->where('locallevel_id', $form[$value]);
+            $options = $options->where('district_id', $form[$value]);
         }
 
         if ($search_term) {

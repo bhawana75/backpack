@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use App\Models\District;
+use App\Models\Province;
+use App\Models\Locallevel;
 use Illuminate\Database\Eloquent\Model;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
 class Employee extends Model
 {
@@ -28,7 +31,15 @@ class Employee extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-
+    public function province(){
+        return $this->belongsTo(Province::class,'province_id','id');
+    }
+    public function district(){
+        return $this->belongsTo(District::class,'district_id','id');
+    }
+    public function locallevel(){
+        return $this->belongsTo(Locallevel::class,'locallevel_id','id');
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

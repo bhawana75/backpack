@@ -25,5 +25,5 @@ Route::group([
 ], function () { // custom admin routes
 
     Route::get('/api/getDistrict/{id}', 'DistrictCrudController@index');
-    Route::get('/api/locallevel/{id}', 'LocallevelCrudController@index');
+    Route::get('/api/getLocallevel/{id}', 'LocallevelCrudController@index');
 }); // this should be the absolute last line of this file
